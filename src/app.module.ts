@@ -1,18 +1,17 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { DishModule } from './dish/dish.module';
+import { DrinkModule } from 'src/drink/drink.module';
 
 @Module({
   imports: [
-    UsersModule,
-    AuthModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://leduc1901:melody19@kylecluster.abjzu.mongodb.net/?retryWrites=true&w=majority',
-    ),
+    DishModule,
+    DrinkModule,
+    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
+    MongooseModule.forRoot(process.env.DB_URI),
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
