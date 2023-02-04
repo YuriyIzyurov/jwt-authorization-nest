@@ -664,6 +664,11 @@
   dependencies:
     "axios" "1.2.1"
 
+"@nestjs/class-transformer@^0.4.0":
+  "integrity" "sha512-aHKhqPVixFCo8m7n2iP1uGgfyF0eYlAgGJKfW27l0BvRCTPBjmoL4956Cf9xVu6WNJzVsp//SOcpIavdnNHYZg=="
+  "resolved" "https://registry.npmjs.org/@nestjs/class-transformer/-/class-transformer-0.4.0.tgz"
+  "version" "0.4.0"
+
 "@nestjs/cli@^9.0.0":
   "integrity" "sha512-cvN4DcLzaqFzKRmpU3tOeLmw7+1p4XXsFLyWgteId0Szf6cAk5KJpD5jl2Kw7f39vNw9Pss8yiJ1q1CD/fcbwQ=="
   "resolved" "https://registry.npmjs.org/@nestjs/cli/-/cli-9.1.4.tgz"
