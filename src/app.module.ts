@@ -4,10 +4,12 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { DishModule } from './dish/dish.module';
+import { DrinkModule } from 'src/drink/drink.module';
 
 @Module({
   imports: [
     DishModule,
+    DrinkModule,
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
     MongooseModule.forRoot(process.env.DB_URI),
     ConfigModule.forRoot(),
