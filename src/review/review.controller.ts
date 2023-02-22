@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
-import { CreateReviewDto } from 'src/review/dto/create-review.dto';
+import { CreateReviewDto } from './dto/create-review.dto';
 import { ObjectId } from 'mongoose';
-import { ReviewService } from 'src/review/review.service';
+import { ReviewService } from './review.service';
 
 @Controller('/reviews')
 export class ReviewController {
