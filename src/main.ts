@@ -10,7 +10,7 @@ async function start() {
     const app = await NestFactory.create(AppModule);
     const corsOptions = {
       // origin: [process.env.ALLOWED_CLIENT_URL],
-      origin: ['*'],
+      origin: '*',
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       preflightContinue: true,
       optionsSuccessStatus: 204,
@@ -18,7 +18,7 @@ async function start() {
       allowedHeaders: ['content-type'],
     };
     if (isDev) {
-      corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
+      // corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
     }
 
     app.enableCors(corsOptions);
