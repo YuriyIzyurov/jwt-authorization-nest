@@ -16,6 +16,7 @@ async function start() {
       optionsSuccessStatus: 204,
       credentials: true,
       allowedHeaders: ['Accept', 'Content-Type'],
+      allowedMethods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     };
     if (isDev) {
       // corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
