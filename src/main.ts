@@ -21,7 +21,7 @@ async function start() {
       corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
     }
 
-    app.enableCors();
+    app.enableCors(corsOptions);
 
     await app.listen(PORT, () => console.log(`server is up on PORT ${PORT}`));
   } catch (e) {
