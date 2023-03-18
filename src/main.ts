@@ -9,11 +9,13 @@ async function start() {
     const PORT = process.env.PORT || 5000;
     const app = await NestFactory.create(AppModule);
     const corsOptions = {
-      origin: [process.env.ALLOWED_CLIENT_URL],
+      // origin: [process.env.ALLOWED_CLIENT_URL],
+      origin: ['*'],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       preflightContinue: true,
       optionsSuccessStatus: 204,
       credentials: true,
+      allowedHeaders: ['content-type'],
     };
     if (isDev) {
       corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
