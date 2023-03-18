@@ -15,7 +15,7 @@ async function start() {
       preflightContinue: true,
       optionsSuccessStatus: 204,
       credentials: true,
-      allowedHeaders: ['content-type'],
+      allowedHeaders: ['Accept', 'Content-Type'],
     };
     if (isDev) {
       // corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
