@@ -1,17 +1,26 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import * as dotenv from 'dotenv';
 
 async function start() {
   try {
+    dotenv.config();
+    const isDev = process.env.NODE_ENV.trim() === 'development';
     const PORT = process.env.PORT || 5000;
     const app = await NestFactory.create(AppModule);
-    app.enableCors({
-      origin: 'https://cafe-lemon.vercel.app',
+    const corsOptions = {
+      origin: [process.env.ALLOWED_CLIENT_URL],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-      preflightContinue: false,
+      preflightContinue: true,
       optionsSuccessStatus: 204,
       credentials: true,
-    });
+    };
+    if (isDev) {
+      corsOptions.origin.push(process.env.ALLOWED_CLIENT_LOCALHOST);
+    }
+
+    app.enableCors(corsOptions);
+
     await app.listen(PORT, () => console.log(`server is up on PORT ${PORT}`));
   } catch (e) {
     console.log(e);
