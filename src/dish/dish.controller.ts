@@ -3,7 +3,7 @@ import { DishService } from './dish.service';
 import {CreateDishDto, UpdateDishDto} from './dto/create-dish.dto';
 import { ObjectId } from 'mongoose';
 import { CreateSpecificationDto } from './dto/create-specification.dto';
-import {CreateDrinkDto} from "src/drink/dto/create-drink.dto";
+
 
 @Controller('/dishes')
 export class DishController {

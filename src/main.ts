@@ -1,9 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
-import { HttpExceptionFilter } from './helpers/http-exception-filter';
 import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe';
-import { ValidationError } from 'class-validator';
+
 
 async function start() {
   try {

@@ -8,7 +8,7 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { getJwtConfig } from '../config/jwt.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from 'src/users/schema/user.schema';
+import { User, UserSchema } from '../users/schema/user.schema';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({

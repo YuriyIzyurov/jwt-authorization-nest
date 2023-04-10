@@ -9,7 +9,7 @@ import { AuthDto } from './dto/auth.dto';
 import { hash, verify } from 'argon2';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { ReturnTokenType, ReturnUserType } from 'src/types/types';
+import { ReturnTokenType, ReturnUserType } from '../types/types';
 
 @Injectable()
 export class AuthService {
