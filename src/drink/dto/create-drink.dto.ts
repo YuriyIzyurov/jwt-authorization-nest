@@ -1,16 +1,25 @@
 import { Type } from '@nestjs/class-transformer';
 import { PriceType } from '../schema/drink.schema';
+import {IsOptional} from "class-validator";
 
 class Price {
-  readonly ml50: number;
-  readonly ml100: number;
-  readonly bottle: number;
+  ml50: number;
+  ml100: number;
+  bottle: number;
 }
 
 export class CreateDrinkDto {
-  readonly name: string;
-  readonly country: string;
+  name: string;
+  @IsOptional()
   @Type(() => Price)
-  readonly price: Price;
-  readonly specification;
+  price: Price;
+  specification: string;
 }
+export class UpdateDrinkDto {
+  @IsOptional()
+  name: string;
+  @IsOptional()
+  @Type(() => Price)
+  price: Price;
+}
+

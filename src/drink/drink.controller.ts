@@ -1,8 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, UseGuards} from '@nestjs/common';
 import { ObjectId } from 'mongoose';
-import { CreateDrinkDto } from './dto/create-drink.dto';
+import {CreateDrinkDto, UpdateDrinkDto} from './dto/create-drink.dto';
 import { CreateVineListDto } from './dto/create-vinelist.dto';
 import { DrinkService } from './drink.service';
+import { ValidationError } from 'class-validator';
+import { AuthGuard } from '@nestjs/passport/dist/auth.guard';
 
 @Controller('/drinks')
 export class DrinkController {
@@ -18,6 +20,11 @@ export class DrinkController {
     return this.drinkService.createVineList(dto);
   }
 
+  @Put(':vinelist/:id')
+  updateVinelist(@Param('id') id: ObjectId, @Body() dto) {
+    return this.drinkService.updateVineList(id, dto);
+  }
+
   @Get()
   getAll() {
     return this.drinkService.getAll();
@@ -28,8 +35,13 @@ export class DrinkController {
     return this.drinkService.getOne(id);
   }
 
+  @Put(':id')
+  update(@Param('id') id: ObjectId, @Body() dto: UpdateDrinkDto) {
+    return  this.drinkService.update(id, dto);
+  }
+
   @Delete(':id')
-  delete(@Param('id') id: ObjectId) {
-    return this.drinkService.delete(id);
+  delete(@Param('id') id: ObjectId, @Body() vineList: {id: string}) {
+    return this.drinkService.delete(id, vineList.id);
   }
 }

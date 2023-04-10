@@ -20,6 +20,10 @@ export class ReviewService {
   async getOne(id: ObjectId): Promise<Review> {
     return this.reviewModel.findById(id);
   }
+  async update(id: ObjectId): Promise<ObjectId> {
+    const review = await this.reviewModel.findByIdAndUpdate(id, {approved: true},{new: true});
+    return review.id;
+  }
   async delete(id: ObjectId): Promise<ObjectId> {
     const review = await this.reviewModel.findByIdAndDelete(id);
     return review.id;

@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import { DishService } from './dish.service';
-import { CreateDishDto } from './dto/create-dish.dto';
+import {CreateDishDto, UpdateDishDto} from './dto/create-dish.dto';
 import { ObjectId } from 'mongoose';
 import { CreateSpecificationDto } from './dto/create-specification.dto';
+import {CreateDrinkDto} from "src/drink/dto/create-drink.dto";
 
 @Controller('/dishes')
 export class DishController {
@@ -18,6 +19,16 @@ export class DishController {
     return this.dishService.createSpecification(dto);
   }
 
+  @Get(':specification/:id')
+  getSpecification(@Param('id') id: ObjectId) {
+    return this.dishService.getOneSpecification(id);
+  }
+
+  @Put(':specification/:id')
+  updateSpecification(@Param('id') id: ObjectId, @Body() dto) {
+    return this.dishService.updateSpecification(id, dto);
+  }
+
   @Get()
   getAll() {
     return this.dishService.getAll();
@@ -27,9 +38,13 @@ export class DishController {
   getOne(@Param('id') id: ObjectId) {
     return this.dishService.getOne(id);
   }
+  @Put(':id')
+  update(@Param('id') id: ObjectId, @Body() dto: UpdateDishDto) {
+    return this.dishService.update(id, dto)
+  }
 
   @Delete(':id')
-  delete(@Param('id') id: ObjectId) {
-    return this.dishService.delete(id);
+  delete(@Param('id') id: ObjectId, @Body() specification: {id: string}) {
+    return this.dishService.delete(id, specification.id);
   }
 }

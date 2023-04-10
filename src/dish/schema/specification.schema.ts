@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, ObjectId } from 'mongoose';
 import { Dish } from './dish.schema';
 import * as mongoose from 'mongoose';
 
@@ -11,7 +11,7 @@ export class Specification {
   name: string;
 
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dish' }] })
-  dishes: Dish[];
+  dishes: ObjectId[];
 }
 
 export const SpecificationSchema = SchemaFactory.createForClass(Specification);

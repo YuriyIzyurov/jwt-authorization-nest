@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CreateReviewDto } from './dto/create-review.dto';
 import { ObjectId } from 'mongoose';
 import { ReviewService } from './review.service';
@@ -10,6 +10,11 @@ export class ReviewController {
   @Post()
   create(@Body() dto: CreateReviewDto) {
     return this.reviewService.create(dto);
+  }
+
+  @Put(':id')
+  update(@Param('id') id: ObjectId) {
+    return this.reviewService.update(id);
   }
 
   @Get()
