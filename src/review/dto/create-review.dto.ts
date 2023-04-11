@@ -1,5 +1,11 @@
+import {IsOptional} from "class-validator";
+
+
 export class CreateReviewDto {
-  readonly name;
-  readonly rating;
-  readonly text;
+  @IsOptional()
+  name: string;
+  @IsOptional()
+  rating: number;
+  @IsOptional()
+  text: string;
 }
